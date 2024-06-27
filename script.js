@@ -18,30 +18,30 @@ function allUnique(string) {
   }
   return true;
 }
-// checks to see if string1 is a permutation of string2
 function checkPerm(string1, string2) {
-  let mapOne = new Map();
-  let mapTwo = new Map();
-  for (let i = 0; i < string1.length; i++) {
-    if (mapOne.get(string1.charAt(i)) === undefined) {
-      mapOne.set(string1.charAt(i), 1);
-    } else {
-      mapOne.set(string1.charAt(i), mapOne.get(string1.charAt(i)) + 1);
-    }
-  }
-  for (let i = 0; i < string2.length; i++) {
-    if (mapTwo.get(string2.charAt(i)) === undefined) {
-      mapTwo.set(string2.charAt(i), 1);
-    } else {
-      mapTwo.set(string2.charAt(i), mapTwo.get(string2.charAt(i)) + 1);
-    }
-  }
-  console.log(mapOne);
-  console.log(mapTwo);
+  // checks to see if one string is a permutation of the other
+  let mapOne = addToMap(string1);
+  let mapTwo = addToMap(string2);
+
   return compareMaps(mapOne, mapTwo);
 }
-// compares 2 maps to see if theyre equal
+
+function addToMap(string) {
+  // takes a string as input and creates a map with every character in the string
+  let myMap = new Map(); // keeps track of how many times each character occurs
+  for (let i = 0; i < string.length; i++) {
+    if (myMap.get(string.charAt(i)) === undefined) {
+      myMap.set(string.charAt(i), 1);
+    } else {
+      myMap.set(string.charAt(i), myMap.get(string.charAt(i)) + 1);
+    }
+  }
+
+  return myMap;
+}
+
 function compareMaps(map1, map2) {
+  // checks to see if two maps are equal. returns true if so, and false if not
   let testVal;
   if (map1.size !== map2.size) {
     return false;
