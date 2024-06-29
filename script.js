@@ -7,6 +7,7 @@ testItems.forEach((item) => {
   });
 });
 
+// Determines if a string has all unique characters
 function allUnique(string) {
   let myMap = new Map();
   for (let i = 0; i < string.length; i++) {
@@ -18,8 +19,9 @@ function allUnique(string) {
   }
   return true;
 }
+
+// checks to see if one string is a permutation of the other
 function checkPerm(string1, string2) {
-  // checks to see if one string is a permutation of the other
   let mapOne = addToMap(string1);
   let mapTwo = addToMap(string2);
 
