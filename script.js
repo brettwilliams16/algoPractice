@@ -67,3 +67,14 @@ function URLIfy(string) {
   //         }
   //     }
 }
+
+function reverseString(word) {
+  // uses a stack to reverse a string
+  let myWord = word.split("");
+  let newWord = [];
+  while (myWord.length > 0) {
+    let i = myWord.pop();
+    newWord.push(i);
+  }
+  return newWord.join("");
+}
