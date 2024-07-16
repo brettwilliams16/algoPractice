@@ -78,3 +78,64 @@ function reverseString(word) {
   }
   return newWord.join("");
 }
+
+function fib(i) {
+  if (i == 0) {
+    return 0;
+  }
+  if (i == 1) {
+    return 1;
+  } else return fib(i - 1) + fib(i - 2);
+}
+
+function myFunction() {
+  let count = 0;
+  function myInnerFunction() {
+    console.log(count);
+    count++;
+  }
+  return myInnerFunction;
+}
+
+function countAnimal(animal) {
+  let count = 1;
+  function returnCount() {
+    console.log(`There are ${count} ${animal}`);
+    count++;
+  }
+  return returnCount;
+}
+
+let myBirds = countAnimal("birds");
+let myDogs = countAnimal("dogs");
+
+myBirds();
+myBirds();
+myDogs();
+myBirds();
+myDogs();
+myDogs();
+
+let buttons = document.querySelectorAll(".buttons");
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    console.log(button.innerHTML + " was clicked!");
+  });
+});
+
+// Playing with simple API logic
+async function getGithubUser(username) {
+  let response = await fetch(
+    "https://api.github.com/users/" + username.toString()
+  );
+  if (!response.ok) {
+    throw new Error("There was an error fetching the data");
+  } else {
+    let data = await response.json();
+    console.log(data);
+    let img = document.createElement("img");
+    img.src = data.avatar_url;
+    img.alt = `An imgage of ${response.login}'s avatar`;
+    document.body.appendChild(img);
+  }
+}
